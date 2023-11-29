@@ -5,7 +5,6 @@ import AdminMain from "./Components/Main/Admin/adminMain";
 import AdminQuiz from "./Components/Quiz/adminQuiz";
 import AdminQuestions from "./Components/Question/adminQuestions";
 import UserMain from "./Components/Main/User/userMain";
-import UserHeader from "./Components/Header/userHeader";
 import UserQuiz from "./Components/Main/User/userQuiz";
 
 const App = () => {
