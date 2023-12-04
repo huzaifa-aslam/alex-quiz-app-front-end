@@ -12,7 +12,7 @@ const App = () => {
     <Box>
       <Routes>
         <Route path="/admin" element={<Header />}>
-          <Route exact index path="categories" element={<AdminMain />} />
+          <Route exact path="/admin/categories" element={<AdminMain />} />
           <Route
             exact
             path="/admin/categories/:categoryid/quiz"
