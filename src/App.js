@@ -11,20 +11,21 @@ const App = () => {
   return (
     <Box>
       <Routes>
-        <Route path="/admin" element={<Header />}>
-          <Route exact path="/admin/categories" element={<AdminMain />} />
-          <Route
-            exact
-            path="/admin/categories/:categoryid/quiz"
-            element={<AdminQuiz />}
-          />
-          <Route
-            exact
-            path="/admin/categories/:categoryid/quiz/:quizid/questions"
-            element={<AdminQuestions />}
-          />
-        </Route>
         <Route exact path="/" element={<UserMain />} />
+
+        {/* <Route path="/admin" element={<Header />}> */}
+        <Route exact path="/admin/categories" element={<AdminMain />} />
+        <Route
+          exact
+          path="/admin/categories/:categoryid/quiz"
+          element={<AdminQuiz />}
+        />
+        <Route
+          exact
+          path="/admin/categories/:categoryid/quiz/:quizid/questions"
+          element={<AdminQuestions />}
+        />
+        {/* </Route> */}
         <Route exact path="/quiz/:id" element={<UserQuiz />} />
       </Routes>
     </Box>
