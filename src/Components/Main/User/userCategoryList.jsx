@@ -17,22 +17,25 @@ function UserCategoryList(props) {
       as="main"
       p={{ base: 4, lg: 6, xl: 14 }}
       minH="30rem"
-      bg={useColorModeValue("auto", "gray.800")}>
+      bg={useColorModeValue("auto", "gray.800")}
+    >
       <Container
         bg="white"
         boxShadow="lg"
         rounded="20px"
         maxW="6xl"
-        p={{ base: 8, md: 12 }}>
+        p={{ base: 8, md: 12 }}
+      >
         <Flex
           flexWrap="wrap"
           justifyContent="space-around"
           gap="25px"
           columnGap="20px"
           spacing={10}
-          mb={4}>
-          {props.quiz.length > 0 ? (
-            props.quiz.map((item) => {
+          mb={4}
+        >
+          {props?.quiz?.length > 0 ? (
+            props?.quiz?.map((item) => {
               return (
                 <Box
                   w="320px"
@@ -50,7 +53,8 @@ function UserCategoryList(props) {
                   _hover={{
                     boxShadow:
                       "0 4px 6px rgba(160, 174, 192, 0.6), 0 4px 6px rgba(9, 17, 28, 0.4)",
-                  }}>
+                  }}
+                >
                   <Flex
                     p={2}
                     w="max-content"
@@ -62,13 +66,15 @@ function UserCategoryList(props) {
                     left={0}
                     right={0}
                     top="-1.5rem"
-                    boxShadow="lg">
+                    boxShadow="lg"
+                  >
                     <Image src={QuizImage} />
                   </Flex>
                   <Box
                     fontWeight="semibold"
                     fontSize={{ base: "large", lg: "xl", xl: "2xl" }}
-                    mt={6}>
+                    mt={6}
+                  >
                     {item.name}
                   </Box>
                   <Text fontSize="md" mt={4}>
@@ -79,7 +85,8 @@ function UserCategoryList(props) {
                     colorScheme="teal"
                     onClick={() => {
                       navigate(`quiz/${item.id}`);
-                    }}>
+                    }}
+                  >
                     Start Quiz
                   </Button>
                 </Box>

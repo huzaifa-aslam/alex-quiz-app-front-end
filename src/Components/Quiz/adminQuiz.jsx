@@ -42,7 +42,7 @@ function AdminQuiz() {
   const toast = useToast();
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/quiz/${categoryid}`)
+      .get(`https://spinpr.cz:4000/quiz/${categoryid}`)
       .then((res) => {
         setAllQuiz(res.data);
         setQuizs(res.data);
@@ -63,7 +63,7 @@ function AdminQuiz() {
     }
 
     axios
-      .post(`http://localhost:4000/quiz/${categoryid}`, {
+      .post(`https://spinpr.cz:4000/quiz/${categoryid}`, {
         name: quiz.name,
         time: timeInSeconds,
       })
@@ -78,7 +78,7 @@ function AdminQuiz() {
         });
         onClose();
         axios
-          .get(`http://localhost:4000/quiz/${categoryid}`)
+          .get(`https://spinpr.cz:4000/quiz/${categoryid}`)
           .then((res) => {
             setAllQuiz(res.data);
             setQuizs(res.data);
@@ -100,7 +100,7 @@ function AdminQuiz() {
 
   const refresh = () => {
     axios
-      .get(`http://localhost:4000/quiz/${categoryid}`)
+      .get(`https://spinpr.cz:4000/quiz/${categoryid}`)
       .then((res) => {
         setAllQuiz(res.data);
         setQuizs(res.data);
@@ -130,7 +130,8 @@ function AdminQuiz() {
         onClose={onClose}
         isOpen={isOpen}
         isCentered
-        closeOnOverlayClick={false}>
+        closeOnOverlayClick={false}
+      >
         <ModalOverlay backgroundColor="rgba(0, 0, 0, 0.8)" />
         <ModalContent rounded="base">
           <ModalHeader fontSize={24} fontWeight="medium" color="#666">
@@ -208,7 +209,8 @@ function AdminQuiz() {
           mt="20px"
           borderWidth="1px"
           borderColor=" gray.300"
-          borderStyle="solid">
+          borderStyle="solid"
+        >
           <Box display="flex" flex="1" w="full" gap="10px" alignItems="center">
             <Box color="#999">
               <TfiSearch size={24} />
@@ -236,7 +238,8 @@ function AdminQuiz() {
           mt="30px"
           mb="15px"
           fontWeight="500"
-          textTransform="uppercase">
+          textTransform="uppercase"
+        >
           Quiz Categories
         </Box>
         {allQuiz.length > 0 ? (
@@ -254,7 +257,7 @@ function AdminQuiz() {
               </Thead>
               <Tbody>
                 {allQuiz &&
-                  allQuiz.map((item) => (
+                  allQuiz?.map((item) => (
                     <AdminQuizList
                       key={item.id}
                       refresh={refresh}

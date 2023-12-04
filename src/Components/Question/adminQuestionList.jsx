@@ -78,7 +78,7 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
       return;
     }
     axios
-      .patch(`http://localhost:4000/questions/${id}`, {
+      .patch(`https://spinpr.cz:4000/questions/${id}`, {
         question: updateQuestion,
         answers: updateSelected,
       })
@@ -109,7 +109,7 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
 
   const deleteQuestion = (id) => {
     axios
-      .delete(`http://localhost:4000/questions/${id}`)
+      .delete(`https://spinpr.cz:4000/questions/${id}`)
       .then((res) => {
         toast({
           position: "top-right",
@@ -142,7 +142,8 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
         onClose={onClose}
         isOpen={isOpen}
         isCentered
-        closeOnOverlayClick={false}>
+        closeOnOverlayClick={false}
+      >
         <ModalOverlay backgroundColor="rgba(0, 0, 0, 0.8)" />
         <ModalContent rounded="base">
           <ModalHeader fontSize={24} fontWeight="medium" color="#666">
@@ -154,7 +155,8 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
               id="question"
               display="flex"
               flexDir="column"
-              gap="10px">
+              gap="10px"
+            >
               <FormLabel>Question</FormLabel>
               <Textarea
                 type="text"
@@ -180,7 +182,8 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
                 type="submit"
                 onClick={() => {
                   updateQuest(question.id);
-                }}>
+                }}
+              >
                 Update
               </Button>
             </ButtonGroup>
@@ -192,12 +195,14 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
           <h2>
             <AccordionButton
               py="12px"
-              _expanded={{ bg: "teal.500", color: "white" }}>
+              _expanded={{ bg: "teal.500", color: "white" }}
+            >
               <Box
                 display="flex "
                 justifyContent="space-between"
                 w="100%"
-                alignItems="center">
+                alignItems="center"
+              >
                 <Box display="flex" alignItems="center" gap="10px">
                   <Box fontSize="20px" fontWeight="600">
                     <MdQuestionAnswer />
@@ -223,7 +228,7 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
                   Answers
                 </Box>
                 <Box display="flex" gap="20px">
-                  {question.answers.map((answer, index) => {
+                  {question?.answers?.map((answer, index) => {
                     return <Box key={index}>{answer}</Box>;
                   })}
                 </Box>
@@ -235,7 +240,8 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
                   variant="solid"
                   onClick={() => {
                     onOpen();
-                  }}>
+                  }}
+                >
                   Update
                 </Button>
                 <Button
@@ -244,7 +250,8 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
                   variant="solid"
                   onClick={() => {
                     deleteQuestion(question.id);
-                  }}>
+                  }}
+                >
                   Delete
                 </Button>
               </Box>

@@ -68,7 +68,7 @@ function UserQuiz() {
   let timerInterval;
   useEffect(() => {
     timerInterval = setInterval(() => {
-      const [hours, minutes, seconds] = time.split(":").map(Number);
+      const [hours, minutes, seconds] = time.split(":")?.map(Number);
       const totalSeconds = hours * 3600 + minutes * 60 + seconds;
       if (totalSeconds > 0) {
         const newTotalSeconds = totalSeconds - 1;
@@ -92,7 +92,7 @@ function UserQuiz() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/quiz/${id}/quiz`)
+      .get(`https://spinpr.cz:4000/quiz/${id}/quiz`)
       .then((res) => {
         setQuiz(res.data);
         setTime(formatTime(res.data.time));
@@ -135,13 +135,15 @@ function UserQuiz() {
 
   useEffect(() => {
     if (quiz.questions && quiz.questions.length > 0) {
-      const initialAnswers = quiz.questions[currentQuestionIndex].answers.map(
-        (answer) => answer
-      );
+      const initialAnswers = quiz?.questions[
+        currentQuestionIndex
+      ]?.answers?.map((answer) => answer);
       setUserAnswers(initialAnswers);
 
       setBlanks(
-        splitQuestion.map((word) => (initialAnswers.includes(word) ? word : ""))
+        splitQuestion?.map((word) =>
+          initialAnswers.includes(word) ? word : ""
+        )
       );
     }
   }, [quiz, splitQuestion]);
@@ -219,7 +221,7 @@ function UserQuiz() {
       setInputAnswers(initialiput);
       const initialAnswers = quiz.questions[
         currentQuestionIndex + 1
-      ].answers.map((answer) => answer);
+      ].answers?.map((answer) => answer);
       setUserAnswers(initialAnswers);
       console.log(initialAnswers);
       // setBlanks(
@@ -256,7 +258,8 @@ function UserQuiz() {
                 animation={
                   parseInt(time.split(":")[2]) < 10 ? animation : "black"
                 }
-                color={parseInt(time.split(":")[2]) < 10 ? "red" : "black"}>
+                color={parseInt(time.split(":")[2]) < 10 ? "red" : "black"}
+              >
                 {time}
               </Box>
             </Box>
@@ -265,8 +268,8 @@ function UserQuiz() {
                 <span style={{ fontWeight: 600 }}>
                   {currentQuestionIndex + 1}:
                 </span>
-                <span >
-                  {splitQuestion.map((word, index) => (
+                <span>
+                  {splitQuestion?.map((word, index) => (
                     <span key={index}>
                       {quiz.questions[currentQuestionIndex].answers.includes(
                         word
@@ -297,7 +300,8 @@ function UserQuiz() {
                     w="full"
                     mt="10px"
                     colorScheme="teal"
-                    onClick={handleNextQuestion}>
+                    onClick={handleNextQuestion}
+                  >
                     Next
                   </Button>
                 </Center>
@@ -323,7 +327,7 @@ function UserQuiz() {
               {calculateRemainingTime(formatTime(quiz.time), time)}
             </Center>
             <Box mt="30px">
-              {quiz.questions.map((ques, ind) => (
+              {quiz?.questions?.map((ques, ind) => (
                 <div key={ind}>
                   <Box fontSize="22px" fontWeight="600">
                     Question no {ind + 1}
@@ -353,7 +357,8 @@ function UserQuiz() {
               colorScheme="teal"
               onClick={() => {
                 navigate("/");
-              }}>
+              }}
+            >
               Back to Categories
             </Button>
           </Center>

@@ -33,7 +33,7 @@ function AdminMain() {
   const toast = useToast();
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/catagories`)
+      .get(`https://spinpr.cz:4000/catagories`)
       .then((res) => {
         setAllCategories(res.data);
         setCategories(res.data);
@@ -46,7 +46,7 @@ function AdminMain() {
       return;
     }
     axios
-      .post(`http://localhost:4000/catagories`, { name: category })
+      .post(`https://spinpr.cz:4000/catagories`, { name: category })
       .then((res) => {
         toast({
           position: "top-right",
@@ -58,7 +58,7 @@ function AdminMain() {
         });
         onClose();
         axios
-          .get(`http://localhost:4000/catagories`)
+          .get(`https://spinpr.cz:4000/catagories`)
           .then((res) => {
             setAllCategories(res.data);
             setCategories(res.data);
@@ -79,7 +79,7 @@ function AdminMain() {
   };
   const refresh = () => {
     axios
-      .get(`http://localhost:4000/catagories`)
+      .get(`https://spinpr.cz:4000/catagories`)
       .then((res) => {
         setAllCategories(res.data);
         setCategories(res.data);
@@ -105,7 +105,8 @@ function AdminMain() {
         onClose={onClose}
         isOpen={isOpen}
         isCentered
-        closeOnOverlayClick={false}>
+        closeOnOverlayClick={false}
+      >
         <ModalOverlay backgroundColor="rgba(0, 0, 0, 0.8)" />
         <ModalContent rounded="base">
           <ModalHeader fontSize={24} fontWeight="medium" color="#666">
@@ -157,7 +158,8 @@ function AdminMain() {
           mt="20px"
           borderWidth="1px"
           borderColor=" gray.300"
-          borderStyle="solid">
+          borderStyle="solid"
+        >
           <Box display="flex" flex="1" w="full" gap="10px" alignItems="center">
             <Box color="#999">
               <TfiSearch size={24} />
@@ -185,7 +187,8 @@ function AdminMain() {
           mt="30px"
           mb="15px"
           fontWeight="500"
-          textTransform="uppercase">
+          textTransform="uppercase"
+        >
           Categories
         </Box>
         {allcategories.length > 0 ? (
@@ -202,7 +205,7 @@ function AdminMain() {
               </Thead>
               <Tbody>
                 {allcategories &&
-                  allcategories.map((item) => (
+                  allcategories?.map((item) => (
                     <AdminCategoriesList
                       key={item.id}
                       refresh={refresh}

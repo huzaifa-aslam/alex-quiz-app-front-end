@@ -33,7 +33,7 @@ function AdminQuestions() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/questions/${quizid}`)
+      .get(`https://spinpr.cz:4000/questions/${quizid}`)
       .then((res) => {
         setAllQuestions(res.data);
       })
@@ -86,7 +86,7 @@ function AdminQuestions() {
       return;
     }
     axios
-      .post(`http://localhost:4000/questions/${quizid}`, {
+      .post(`https://spinpr.cz:4000/questions/${quizid}`, {
         question,
         answers: selected,
       })
@@ -103,7 +103,7 @@ function AdminQuestions() {
         setSelected([]);
         onClose();
         axios
-          .get(`http://localhost:4000/questions/${quizid}`)
+          .get(`https://spinpr.cz:4000/questions/${quizid}`)
           .then((res) => {
             setAllQuestions(res.data);
           })
@@ -124,7 +124,7 @@ function AdminQuestions() {
 
   const refresh = () => {
     axios
-      .get(`http://localhost:4000/questions/${quizid}`)
+      .get(`https://spinpr.cz:4000/questions/${quizid}`)
       .then((res) => {
         setAllQuestions(res.data);
         // setQuestion(res.data);
@@ -150,7 +150,8 @@ function AdminQuestions() {
         onClose={onClose}
         isOpen={isOpen}
         isCentered
-        closeOnOverlayClick={false}>
+        closeOnOverlayClick={false}
+      >
         <ModalOverlay backgroundColor="rgba(0, 0, 0, 0.8)" />
         <ModalContent rounded="base">
           <ModalHeader
@@ -159,7 +160,8 @@ function AdminQuestions() {
             }}
             fontSize={24}
             fontWeight="medium"
-            color="#666">
+            color="#666"
+          >
             Create new Question
           </ModalHeader>
           <ModalCloseButton mt="12px" />
@@ -168,7 +170,8 @@ function AdminQuestions() {
               id="question"
               display="flex"
               flexDir="column"
-              gap="10px">
+              gap="10px"
+            >
               <FormLabel>Question</FormLabel>
               <Textarea
                 type="text"
@@ -216,7 +219,8 @@ function AdminQuestions() {
           mt="20px"
           borderWidth="1px"
           borderColor=" gray.300"
-          borderStyle="solid">
+          borderStyle="solid"
+        >
           <Box display="flex" flex="1" w="full" gap="10px" alignItems="center">
             <Box color="#999">
               <TfiSearch size={24} />
@@ -244,12 +248,13 @@ function AdminQuestions() {
           mt="30px"
           mb="15px"
           fontWeight="500"
-          textTransform="uppercase">
+          textTransform="uppercase"
+        >
           Questions
         </Box>
         {allQuestions.length > 0 ? (
           allQuestions &&
-          allQuestions.map((item, index) => (
+          allQuestions?.map((item, index) => (
             <AdminQuestionList
               questionNumber={index}
               key={item.id}

@@ -14,16 +14,18 @@ const App = () => {
         <Route path="/admin" element={<Header />}>
           <Route exact index path="categories" element={<AdminMain />} />
           <Route
+            exact
             path="/admin/categories/:categoryid/quiz"
             element={<AdminQuiz />}
           />
           <Route
+            exact
             path="/admin/categories/:categoryid/quiz/:quizid/questions"
             element={<AdminQuestions />}
           />
         </Route>
-        <Route path="/" element={<UserMain />} />
-        <Route path="/quiz/:id" element={<UserQuiz />} />
+        <Route exact path="/" element={<UserMain />} />
+        <Route exact path="/quiz/:id" element={<UserQuiz />} />
       </Routes>
     </Box>
   );

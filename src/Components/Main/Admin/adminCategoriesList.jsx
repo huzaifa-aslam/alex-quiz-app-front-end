@@ -37,7 +37,7 @@ function AdminCategoriesList({ category, refresh }) {
       });
     }
     axios
-      .patch(`http://localhost:4000/catagories/${id}`, {
+      .patch(`https://spinpr.cz:4000/catagories/${id}`, {
         name: updateCategoryname,
       })
       .then((res) => {
@@ -67,7 +67,7 @@ function AdminCategoriesList({ category, refresh }) {
 
   const deleteCategory = (id) => {
     axios
-      .delete(`http://localhost:4000/catagories/${id}`)
+      .delete(`https://spinpr.cz:4000/catagories/${id}`)
       .then((res) => {
         toast({
           position: "top-right",
@@ -96,19 +96,22 @@ function AdminCategoriesList({ category, refresh }) {
     <Tr
       _hover={{ boxShadow: "lg", rounded: "10px" }}
       py="5px"
-      key={category.id}>
+      key={category.id}
+    >
       <Td
         cursor="pointer"
         onClick={() => {
           navigation(`${category.id}/quiz`);
-        }}>
+        }}
+      >
         {category.name}
       </Td>
       <Td
         cursor="pointer"
         onClick={() => {
           navigation(`${category.id}/quiz`);
-        }}>
+        }}
+      >
         {category.quiz.length}
       </Td>
       <Td textAlign="end">
@@ -136,7 +139,8 @@ function AdminCategoriesList({ category, refresh }) {
                     colorScheme="blue"
                     onClick={() => {
                       updateCategory(category.id);
-                    }}>
+                    }}
+                  >
                     Save
                   </Button>
                 </Stack>
@@ -151,7 +155,8 @@ function AdminCategoriesList({ category, refresh }) {
             deleteCategory(category.id);
           }}
           colorScheme="teal"
-          _hover={{ bg: "red.500" }}>
+          _hover={{ bg: "red.500" }}
+        >
           <AiOutlineDelete />
         </Button>
       </Td>

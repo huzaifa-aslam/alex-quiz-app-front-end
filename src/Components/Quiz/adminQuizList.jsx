@@ -49,7 +49,7 @@ function AdminQuizList({ quiz, refresh }) {
     }
 
     axios
-      .patch(`http://localhost:4000/quiz/${id}`, {
+      .patch(`https://spinpr.cz:4000/quiz/${id}`, {
         name: updateQuiz.name,
         time: timeInSeconds,
       })
@@ -80,7 +80,7 @@ function AdminQuizList({ quiz, refresh }) {
 
   const deleteQuiz = (id) => {
     axios
-      .delete(`http://localhost:4000/quiz/${id}`)
+      .delete(`https://spinpr.cz:4000/quiz/${id}`)
       .then((res) => {
         toast({
           position: "top-right",
@@ -111,21 +111,24 @@ function AdminQuizList({ quiz, refresh }) {
         cursor="pointer"
         onClick={() => {
           navigation(`${quiz.id}/questions`);
-        }}>
+        }}
+      >
         {quiz.name}
       </Td>
       <Td
         cursor="pointer"
         onClick={() => {
           navigation(`${quiz.id}/questions`);
-        }}>
+        }}
+      >
         {quiz.questions.length}
       </Td>
       <Td
         cursor="pointer"
         onClick={() => {
           navigation(`${quiz.id}/questions`);
-        }}>
+        }}
+      >
         {quiz.time}
       </Td>
       <Td textAlign="end">
@@ -171,7 +174,8 @@ function AdminQuizList({ quiz, refresh }) {
                       value={unit}
                       onChange={(e) => {
                         setUnit(e.target.value);
-                      }}>
+                      }}
+                    >
                       <option value="seconds">Seconds</option>
                       <option value="minutes">Minutes</option>
                       <option value="hours">Hours</option>
@@ -181,7 +185,8 @@ function AdminQuizList({ quiz, refresh }) {
                     colorScheme="blue"
                     onClick={() => {
                       updateCategory(quiz.id);
-                    }}>
+                    }}
+                  >
                     Save
                   </Button>
                 </Stack>
@@ -196,7 +201,8 @@ function AdminQuizList({ quiz, refresh }) {
             deleteQuiz(quiz.id);
           }}
           colorScheme="teal"
-          _hover={{ bg: "red.500" }}>
+          _hover={{ bg: "red.500" }}
+        >
           <AiOutlineDelete />
         </Button>
       </Td>

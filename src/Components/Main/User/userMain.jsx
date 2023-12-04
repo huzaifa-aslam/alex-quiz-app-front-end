@@ -26,7 +26,7 @@ export default function UserMain() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/catagories`)
+      .get(`https://spinpr.cz:4000/catagories`)
       .then((res) => {
         setCategories(res.data);
         setQuiz(res.data[0].quiz);
@@ -41,7 +41,8 @@ export default function UserMain() {
     <Box
       as="section"
       bg={useColorModeValue("gray.50", "gray.700")}
-      minH="100vh">
+      minH="100vh"
+    >
       <SidebarContent
         categorie={categories}
         quiztodisplay={quiztodisplay}
@@ -70,7 +71,8 @@ export default function UserMain() {
           bg={useColorModeValue("white", "gray.800")}
           justify={{ base: "space-between", md: "flex-end" }}
           boxShadow="lg"
-          h="14">
+          h="14"
+        >
           <IconButton
             aria-label="Menu"
             display={{ base: "inline-flex", md: "none" }}
@@ -104,7 +106,8 @@ const SidebarContent = ({ quiztodisplay, ...props }) => (
     borderColor={useColorModeValue("inherit", "gray.700")}
     borderRightWidth="1px"
     w="60"
-    {...props}>
+    {...props}
+  >
     <VStack h="full" w="full" alignItems="flex-start" justify="space-between">
       <Box w="full">
         <Flex px="4" py="5" align="center">
@@ -113,7 +116,8 @@ const SidebarContent = ({ quiztodisplay, ...props }) => (
             fontSize="2xl"
             ml="2"
             color={useColorModeValue("brand.500", "white")}
-            fontWeight="semibold">
+            fontWeight="semibold"
+          >
             QuizTime
           </Text>
         </Flex>
@@ -123,7 +127,8 @@ const SidebarContent = ({ quiztodisplay, ...props }) => (
           as="nav"
           fontSize="md"
           color="gray.600"
-          aria-label="Main Navigation">
+          aria-label="Main Navigation"
+        >
           {props.categorie ? (
             <Box
               display="flex"
@@ -132,7 +137,8 @@ const SidebarContent = ({ quiztodisplay, ...props }) => (
               ml="25px"
               fontSize="20px"
               fontWeight="600"
-              mb="15px">
+              mb="15px"
+            >
               <BiSolidCategory />
               Categories
             </Box>
@@ -142,14 +148,15 @@ const SidebarContent = ({ quiztodisplay, ...props }) => (
             </Box>
           )}
 
-          {props.categorie &&
-            props.categorie.map((category) => {
+          {props?.categorie &&
+            props?.categorie?.map((category) => {
               return (
                 <Box
                   key={category.id}
                   onClick={() => {
                     quiztodisplay(category.quiz);
-                  }}>
+                  }}
+                >
                   <NavItem>
                     <Box ml="12px">{category.name} </Box>
                   </NavItem>
@@ -179,7 +186,8 @@ const NavItem = (props) => {
       _hover={{
         bg: useColorModeValue("gray.100", "gray.900"),
         color: useColorModeValue("gray.900", "gray.200"),
-      }}>
+      }}
+    >
       {icon && (
         <Icon
           mx="2"
