@@ -42,7 +42,7 @@ function AdminQuiz() {
   const toast = useToast();
   useEffect(() => {
     axios
-      .get(`https://spinpr.cz:4000/quiz/${categoryid}`)
+      .get(`https://localhost:4000/quiz/${categoryid}`)
       .then((res) => {
         setAllQuiz(res.data);
         setQuizs(res.data);
@@ -63,7 +63,7 @@ function AdminQuiz() {
     }
 
     axios
-      .post(`https://spinpr.cz:4000/quiz/${categoryid}`, {
+      .post(`https://localhost:4000/quiz/${categoryid}`, {
         name: quiz.name,
         time: timeInSeconds,
       })
@@ -78,7 +78,7 @@ function AdminQuiz() {
         });
         onClose();
         axios
-          .get(`https://spinpr.cz:4000/quiz/${categoryid}`)
+          .get(`https://localhost:4000/quiz/${categoryid}`)
           .then((res) => {
             setAllQuiz(res.data);
             setQuizs(res.data);
@@ -100,7 +100,7 @@ function AdminQuiz() {
 
   const refresh = () => {
     axios
-      .get(`https://spinpr.cz:4000/quiz/${categoryid}`)
+      .get(`https://localhost:4000/quiz/${categoryid}`)
       .then((res) => {
         setAllQuiz(res.data);
         setQuizs(res.data);

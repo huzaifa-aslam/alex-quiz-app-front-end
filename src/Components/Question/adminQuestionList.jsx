@@ -78,7 +78,7 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
       return;
     }
     axios
-      .patch(`https://spinpr.cz:4000/questions/${id}`, {
+      .patch(`https://localhost:4000/questions/${id}`, {
         question: updateQuestion,
         answers: updateSelected,
       })
@@ -109,7 +109,7 @@ function AdminQuestionList({ question, questionNumber, refresh }) {
 
   const deleteQuestion = (id) => {
     axios
-      .delete(`https://spinpr.cz:4000/questions/${id}`)
+      .delete(`https://localhost:4000/questions/${id}`)
       .then((res) => {
         toast({
           position: "top-right",

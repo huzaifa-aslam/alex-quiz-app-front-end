@@ -92,7 +92,7 @@ function UserQuiz() {
 
   useEffect(() => {
     axios
-      .get(`https://spinpr.cz:4000/quiz/${id}/quiz`)
+      .get(`https://localhost:4000/quiz/${id}/quiz`)
       .then((res) => {
         setQuiz(res.data);
         setTime(formatTime(res.data.time));

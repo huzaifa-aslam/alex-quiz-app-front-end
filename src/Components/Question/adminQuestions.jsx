@@ -33,7 +33,7 @@ function AdminQuestions() {
 
   useEffect(() => {
     axios
-      .get(`https://spinpr.cz:4000/questions/${quizid}`)
+      .get(`https://localhost:4000/questions/${quizid}`)
       .then((res) => {
         setAllQuestions(res.data);
       })
@@ -86,7 +86,7 @@ function AdminQuestions() {
       return;
     }
     axios
-      .post(`https://spinpr.cz:4000/questions/${quizid}`, {
+      .post(`https://localhost:4000/questions/${quizid}`, {
         question,
         answers: selected,
       })
@@ -103,7 +103,7 @@ function AdminQuestions() {
         setSelected([]);
         onClose();
         axios
-          .get(`https://spinpr.cz:4000/questions/${quizid}`)
+          .get(`https://localhost:4000/questions/${quizid}`)
           .then((res) => {
             setAllQuestions(res.data);
           })
@@ -124,7 +124,7 @@ function AdminQuestions() {
 
   const refresh = () => {
     axios
-      .get(`https://spinpr.cz:4000/questions/${quizid}`)
+      .get(`https://localhost:4000/questions/${quizid}`)
       .then((res) => {
         setAllQuestions(res.data);
         // setQuestion(res.data);

@@ -26,7 +26,7 @@ export default function UserMain() {
 
   useEffect(() => {
     axios
-      .get(`https://spinpr.cz:4000/catagories`)
+      .get(`https://localhost:4000/catagories`)
       .then((res) => {
         setCategories(res.data);
         setQuiz(res.data[0].quiz);
