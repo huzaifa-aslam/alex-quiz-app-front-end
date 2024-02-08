@@ -26,7 +26,7 @@ export default function UserMain() {
 
   useEffect(() => {
     axios
-      .get(`https://localhost:4000/catagories`)
+      .get(`https://oljarquiz.com:4000/catagories`)
       .then((res) => {
         setCategories(res.data);
         setQuiz(res.data[0].quiz);

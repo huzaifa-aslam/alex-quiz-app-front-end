@@ -49,7 +49,7 @@ function AdminQuizList({ quiz, refresh }) {
     }
 
     axios
-      .patch(`https://localhost:4000/quiz/${id}`, {
+      .patch(`https://oljarquiz.com:4000/quiz/${id}`, {
         name: updateQuiz.name,
         time: timeInSeconds,
       })
@@ -80,7 +80,7 @@ function AdminQuizList({ quiz, refresh }) {
 
   const deleteQuiz = (id) => {
     axios
-      .delete(`https://localhost:4000/quiz/${id}`)
+      .delete(`https://oljarquiz.com:4000/quiz/${id}`)
       .then((res) => {
         toast({
           position: "top-right",

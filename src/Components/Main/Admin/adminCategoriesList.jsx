@@ -37,7 +37,7 @@ function AdminCategoriesList({ category, refresh }) {
       });
     }
     axios
-      .patch(`https://localhost:4000/catagories/${id}`, {
+      .patch(`https://oljarquiz.com:4000/catagories/${id}`, {
         name: updateCategoryname,
       })
       .then((res) => {
@@ -67,7 +67,7 @@ function AdminCategoriesList({ category, refresh }) {
 
   const deleteCategory = (id) => {
     axios
-      .delete(`https://localhost:4000/catagories/${id}`)
+      .delete(`https://oljarquiz.com:4000/catagories/${id}`)
       .then((res) => {
         toast({
           position: "top-right",

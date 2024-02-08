@@ -33,7 +33,7 @@ function AdminMain() {
   const toast = useToast();
   useEffect(() => {
     axios
-      .get(`https://localhost:4000/catagories`)
+      .get(`https://oljarquiz.com:4000/catagories`)
       .then((res) => {
         setAllCategories(res.data);
         setCategories(res.data);
@@ -46,7 +46,7 @@ function AdminMain() {
       return;
     }
     axios
-      .post(`https://localhost:4000/catagories`, { name: category })
+      .post(`https://oljarquiz.com:4000/catagories`, { name: category })
       .then((res) => {
         toast({
           position: "top-right",
@@ -58,7 +58,7 @@ function AdminMain() {
         });
         onClose();
         axios
-          .get(`https://localhost:4000/catagories`)
+          .get(`https://oljarquiz.com:4000/catagories`)
           .then((res) => {
             setAllCategories(res.data);
             setCategories(res.data);
@@ -79,7 +79,7 @@ function AdminMain() {
   };
   const refresh = () => {
     axios
-      .get(`https://localhost:4000/catagories`)
+      .get(`https://oljarquiz.com:4000/catagories`)
       .then((res) => {
         setAllCategories(res.data);
         setCategories(res.data);
